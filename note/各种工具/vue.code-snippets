@@ -1,0 +1,64 @@
+{
+    "vuesetup": {
+        "prefix": "vuesetup",
+        "scope": "javascript,typescript,vue",
+        "body": [
+            "<!-- eslint-disable vue/multi-word-component-names -->",
+            "<!-- =============================模板============================ -->",
+            "<template>",
+            "   <div class = \"${1:home}\">",
+            "       <h2>${1:home}</h2>",
+            "   </div>",
+            "</template>",
+            "",
+            "",
+            "<!-- =============================代码============================ -->",
+            "<script setup lang=\"ts\">",
+            "",
+            "</script>",
+            "",
+            "",
+            "<!-- =============================样式============================ -->",
+            "<style lang=\"less\" scoped>",
+            ".${1:home} {",
+            "  color:red;",
+            "}",
+            "</style>"
+        ],
+        "description": "vueSetup"
+    },
+    "dd": {
+        "scope": "javascript,typescript,vue",
+        "prefix": "dd",
+        "body": [
+            "console.log(\"${1}\")"
+        ],
+        "description": "打印纯字符串"
+    },
+    "ddd": {
+        "scope": "javascript,typescript,vue",
+        "prefix": "ddd",
+        "body": [
+            "console.log(\"%s,%o\",\"${1}\",${2})"
+        ],
+        "description": "打印纯字符串"
+    },
+    "@":{
+        "scope": "javascript,typescript,vue",
+        "prefix": "@",
+        "body": [
+    "{",
+      "\"id\": ${1},",
+      "\"name\": \"玩家${1}\",",
+      "\"realname\": \"真实-玩家${1}\",",
+      "\"cellphone\": 1590000000${1},",
+      "\"enable\": ${1},",
+      "\"departmentId\": ${1},",
+      "\"roleId\": ${1},",
+      "\"createAt\": \"2025-04-22 10:00:00\",",
+      "\"updateAt\": \"2025-04-22 10:00:0${1}\"",
+    "},"
+        ],
+        "description": "装饰器"
+    }
+}
