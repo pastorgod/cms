@@ -6,6 +6,7 @@
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     // 这个配置让 TypeScript 能够自动解析这些扩展名
     "allowImportingTsExtensions": true,
+    "noImplicitAny": false,
 
     "paths": {
       "@/*": ["./src/*"]
