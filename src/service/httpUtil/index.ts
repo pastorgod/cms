@@ -1,9 +1,9 @@
 import { BASE_URL, TIME_OUT } from '../config'
-import XXRequest from './requestUtil'
+import AxiosUtil from './httpUtil'
 
-const xxRequest = new XXRequest({
+const axiosUtil = new AxiosUtil({
   baseURL: BASE_URL,
   timeout: TIME_OUT
 })
 
-export default xxRequest
+export default axiosUtil

@@ -6,7 +6,7 @@ import axios from 'axios'
 
 // 针对AxiosRequestConfig配置进行扩展
 export interface InterceptorsExtend<T = AxiosResponse> {
-  requestSuccessFn?: (config: AxiosRequestConfig) => AxiosRequestConfig
+  requestSuccessFn?: (config: InternalAxiosRequestConfig) => InternalAxiosRequestConfig
   requestFailureFn?: (err: any) => any
   responseSuccessFn?: (res: T) => T
   responseFailureFn?: (err: any) => any
@@ -19,23 +19,25 @@ export interface AxiosRequestConfigExtend<T = AxiosResponse> extends AxiosReques
 // import { localCache } from '@/utils/cache'
 // import CONST from '@/global/constDefine'
 
-class HYRequest {
+class AxiosUtil {
   instance: AxiosInstance
 
   // request实例 => axios的实例
   constructor(config: AxiosRequestConfigExtend) {
+
     this.instance = axios.create(config)
+
     // 每个instance实例都添加拦截器
     this.instance.interceptors.request.use(
       (config: InternalAxiosRequestConfig<any>) => {
         // loading/token
         // console.log('全局请求成功的拦截')
 
-        // const token = localCache.getItem(CONST.LOGIN_TOKEN)
-        // if(config.headers && token)
-        // {
-        //   config.headers.Authorization = 'Bearer ' + token
-        // }
+        const token = localCache.getItem(CONST.LOGIN_TOKEN)
+        if(config.headers && token)
+        {
+          config.headers.Authorization = 'Bearer ' + token
+        }
 
         return config
       },
@@ -55,7 +57,7 @@ class HYRequest {
 
     // 针对特定的hyRequest实例添加拦截器
     this.instance.interceptors.request.use(
-      config.interceptors?.requestSuccessFn as (config: InternalAxiosRequestConfig<any>) => InternalAxiosRequestConfig<any>,
+      config.interceptors?.requestSuccessFn,
       config.interceptors?.requestFailureFn
     )
 
@@ -66,8 +68,8 @@ class HYRequest {
   }
 
   // 封装网络请求的方法
-  // T => IHomeData
   request<T = any>(config: AxiosRequestConfigExtend<T>) {
+
     // 单次请求的成功拦截处理
     if (config.interceptors?.requestSuccessFn) {
       config = config.interceptors.requestSuccessFn(config as InternalAxiosRequestConfig<any>)
@@ -104,4 +106,4 @@ class HYRequest {
   }
 }
 
-export default HYRequest
+export default AxiosUtil
