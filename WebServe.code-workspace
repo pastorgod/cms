@@ -6,5 +6,6 @@
   ],
   "settings": {
     "editor.snippetSuggestions": "bottom",
+    "editor.minimap.sectionHeaderFontSize": 10,
   },
 }

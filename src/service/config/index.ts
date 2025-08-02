@@ -9,3 +9,4 @@ console.log(import.meta.env.MODE)
 const BASE_URL = 'http://localhost:5254'
 const TIME_OUT = 10000
 export { BASE_URL,TIME_OUT }
+//#region 创建axios实例
