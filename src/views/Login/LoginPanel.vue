@@ -9,7 +9,7 @@
       <el-link href="#" type="primary">忘记密码</el-link>
     </div>
 
-    <el-button class="login-btn" type="primary" @click="loginHanle">立即登录</el-button>
+    <el-button class="login-btn" type="primary" size="large" @click="loginHanle">立即登录</el-button>
 
     <!-- <div class="loginBtn">立即登录</div> -->
   </div>
@@ -66,7 +66,12 @@ function loginHanle()
   .login-btn{
     margin-top: 10px;
     width: 100%;
+    --el-button-size:50px;
   }
+
+
+
+
 
   // display: flex;
   // align-items: center;
