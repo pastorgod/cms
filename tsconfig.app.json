@@ -10,7 +10,10 @@
     "noImplicitAny": false,
 
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@public/*": ["./public/*"],
+      "@view/*": ["./src/view/*"],
+      "@service/*": ["./src/service/*"],
     }
   }
 }

@@ -2,25 +2,29 @@
 <!-- =============================模板============================ -->
 <template>
   <div class="LoginPanel">
-    <div class="tabs">
-      <el-tabs type="border-card" stretch>
-        <el-tab-pane>
-          <template #label>
-            <div class="tabs-child">
-              <span class="tabs-icon">
-                <el-icon size="16"><UserFilled /></el-icon>
-              </span>
-              <span>账号登录</span>
-            </div>
-          </template>
+    <div>
+      <el-tabs type="border-card" stretch v-model="activeName">
 
-          <div></div>
-          <div></div>
+        <!-- 账号登录面板 -->
+        <el-tab-pane name="account">
+          <template #label>
+            <TabSlot label="账号登录" icon="UserFilled" :size="16" />
+          </template>
+          <AcountPanel />
         </el-tab-pane>
-        <el-tab-pane label="扫码登录"></el-tab-pane>
+
+        <!-- 二维码登录面板 -->
+        <el-tab-pane name="qrcode" class="qrcode-panel">
+          <template #label>
+            <TabSlot label="二维码登录" icon="Platform" :size="16" />
+          </template>
+          <img  src="@public/qrcode.png" alt="二维码" />
+        </el-tab-pane>
+
       </el-tabs>
     </div>
-    <div class="controls">
+
+    <div class="options">
       <el-checkbox id="" v-model="isSavePassword" label="记住密码" size="large" />
       <el-link href="#" type="primary">忘记密码</el-link>
     </div>
@@ -33,20 +37,13 @@
 
 <!-- =============================代码============================ -->
 <script setup lang="ts">
+
 //#region 引入模块
 import { ref, computed, watch, onMounted } from 'vue'
-//传入属性参数
-//import { type Action } from '@/config/delegate'
+import AcountPanel from './AcountPanel.vue'
+import TabSlot from './TabSlot.vue'
 
-const props = defineProps<{
-  //foo: string
-  //func: Aciton
-}>()
-
-//子控件发出事件
-const emit = defineEmits<{
-  //change: [id: number] // 具名元组语法
-}>()
+const activeName = ref('account')
 
 let isSavePassword = ref(false)
 
@@ -59,45 +56,22 @@ function loginHanle() {}
   width: 330px;
   margin-bottom: 150px;
 
-  .tabs{
-    .tabs-child{
-      width: 70%;
-      display: flex;
-      justify-content: center; /* 水平居中 */
-      align-items: center;      /* 垂直居中（可选） */
-    }
-    .tabs-child span:nth-child(1){
-        display: flex;
-        flex:0.3;
-      }
-      .tabs-child span:nth-child(2){
-        display: flex;
-        flex:1;
-      }
-  }
-
-  .icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .text {
-      margin-left: 5px;
-    }
-  }
-  .controls {
+  .options {
     margin-top: 12px;
     display: flex;
     justify-content: space-between;
   }
+
   .login-btn {
     margin-top: 10px;
     width: 100%;
     --el-button-size: 50px;
   }
-
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
-  // background-color:#0bd30b;
+  .qrcode-panel{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 </style>
