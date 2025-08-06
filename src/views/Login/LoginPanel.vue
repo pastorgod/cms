@@ -18,7 +18,7 @@
           <template #label>
             <TabSlot label="二维码登录" icon="Platform" :size="16" />
           </template>
-          <img  src="@public/qrcode.png" alt="二维码" />
+          <img  src="@img/qrcode.png" alt="二维码" />
         </el-tab-pane>
 
       </el-tabs>

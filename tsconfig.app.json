@@ -11,7 +11,7 @@
 
     "paths": {
       "@/*": ["./src/*"],
-      "@public/*": ["./public/*"],
+      "@img/*": ["./src/assets/img/*"],
       "@view/*": ["./src/view/*"],
       "@service/*": ["./src/service/*"],
     }

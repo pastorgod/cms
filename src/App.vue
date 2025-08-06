@@ -32,7 +32,7 @@ onUnmounted(() => window.removeEventListener('mousemove', update))
 .App {
   width: 100vw;
   height: 100vh;
-  background-color: #87ceeb;
+  // background-color: #87ceeb;
 }
 
 .pos-notice{

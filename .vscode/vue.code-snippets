@@ -15,7 +15,7 @@
             "<!-- =============================代码============================ -->",
             "<script setup lang=\"ts\">",
             "",
-            "import { ref, computed, watch, onMounted, resolveComponent } from 'vue'",
+            "import { ref,reactive, computed, watch, onMounted, resolveComponent } from 'vue'",
             "",
             "//方法委托类Action-Action6",
             "//import { type Action } from '@/config/delegate'",

@@ -2,7 +2,6 @@
 <!-- =============================模板============================ -->
 <template>
    <div class = "LoginView">
-      <h2>LoginView</h2>
       <LoginPanel />
    </div>
 </template>
@@ -39,6 +38,6 @@ const emit = defineEmits<{
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color:#87ceeb;
+  // background-color:#87ceeb;
 }
 </style>
