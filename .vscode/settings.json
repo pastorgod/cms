@@ -8,9 +8,10 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": "explicit"
   },
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
+  "prettier.enable": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "files.exclude":{
+  "files.exclude": {
     "**/.git": true,
     "**/.svn": true,
     "**/.DS_Store": true,

@@ -1,4 +1,4 @@
-# justify-*
+# justify-\*
 
 ## 🌐[手册查询](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content)
 
@@ -19,9 +19,9 @@ justify-content: last baseline;
 
 /* Distributed alignment */
 justify-content: space-between; /* 均匀排列每个元素,首个元素放置于起点，末尾元素放置于终点 */
-justify-content: space-around;  /* 均匀排列每个元素,每个元素周围分配相同的空间 */
-justify-content: space-evenly;  /* 均匀排列每个元素,每个元素之间的间隔相等 */
-justify-content: stretch;       /* 均匀排列每个元素,'auto'-sized 的元素会被拉伸以适应容器的大小 */
+justify-content: space-around; /* 均匀排列每个元素,每个元素周围分配相同的空间 */
+justify-content: space-evenly; /* 均匀排列每个元素,每个元素之间的间隔相等 */
+justify-content: stretch; /* 均匀排列每个元素,'auto'-sized 的元素会被拉伸以适应容器的大小 */
 
 /* Overflow alignment */
 justify-content: safe center;
@@ -31,5 +31,4 @@ justify-content: unsafe center;
 justify-content: inherit;
 justify-content: initial;
 justify-content: unset;
-
 ```

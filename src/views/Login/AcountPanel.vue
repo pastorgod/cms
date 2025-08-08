@@ -2,12 +2,12 @@
 <!-- =============================模板============================ -->
 <template>
   <div class="AcountPanel">
-    <el-form :model="account" label-width="auto" style="max-width: 600px" :rules="rules" ref="ruleFormRef">
+    <el-form :model="form" label-width="auto" style="max-width: 600px" :rules="rules" ref="formRef">
       <el-form-item label="帐  号" prop="accountName">
-        <el-input v-model="account.name" />
+        <el-input v-model="form.username" placeholder="请输入账号" />
       </el-form-item>
       <el-form-item label="密  码" prop="accountPassword">
-        <el-input v-model="account.password" show-password />
+        <el-input v-model="form.password" show-password placeholder="******" />
       </el-form-item>
     </el-form>
   </div>
@@ -26,16 +26,21 @@ const props = defineProps<{
   //func: Aciton
 }>()
 
+const state = reactive({
+  //foo: props.foo,
+  //func: props.func,
+})
+
 //定义事件
 const emit = defineEmits<{
   //change: [id: number] // 具名元组语法
 }>()
 
-const ruleFormRef = ref<FormInstance>()
+const formRef = ref<FormInstance>()
 
 //绑定表单对象
-const account = reactive({
-  name: '',
+const form = reactive({
+  username: '',
   password: '',
 })
 
@@ -46,6 +51,21 @@ const rules: FormRules = {
   ],
   accountPassword: [],
 }
+
+//执行登录逻辑
+function GetUserName():string {
+  formRef.value
+  if(formRef.value?.validate()){
+    return form.username;
+  }
+  return ""
+}
+
+defineExpose({
+  GetUserName,
+})
+
+
 </script>
 
 <!-- =============================样式============================ -->

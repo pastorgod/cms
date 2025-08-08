@@ -9,7 +9,8 @@ import './assets/css/index.less'
 import 'element-plus/dist/index.css'
 
 //element-plus组件和图标
-import { ElementPlus,registerIcons } from '@/plugins/elementPlus'
+import ElementComp from '@/plugins/ElementComp'
+import ElementPlus from 'element-plus'
 
 import App from './App.vue'
 import router from './router/router'
@@ -19,7 +20,9 @@ const pinia = createPinia()
 const app = createApp(App)
 app.use(pinia)
 app.use(router)
+
+//element-plus
 app.use(ElementPlus)
-app.use(registerIcons)
+app.use(ElementComp)
 
 app.mount('#app')

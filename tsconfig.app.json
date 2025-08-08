@@ -14,6 +14,7 @@
       "@img/*": ["./src/assets/img/*"],
       "@view/*": ["./src/view/*"],
       "@service/*": ["./src/service/*"],
+      "@utils/*": ["./src/utils/*"],
     }
   }
 }
