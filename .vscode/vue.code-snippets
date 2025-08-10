@@ -58,14 +58,5 @@
         "body": [
             "console.log(\"%s,%o\",\"${1}\",${2})"
         ],
-    },
-    "mycode": {
-        "scope": "md,markdown,Markdown",
-        "prefix": "mycode",
-        "body": [
-            "```html",
-            "${1}",
-            "```"
-        ],
     }
 }

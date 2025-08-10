@@ -17,6 +17,9 @@ export default defineConfig({
       '@view': fileURLToPath(new URL('./src/view', import.meta.url)),
       '@service': fileURLToPath(new URL('./src/service', import.meta.url)),
       '@utils': fileURLToPath(new URL('./src/utils', import.meta.url)),
+      '@interface': fileURLToPath(new URL('./src/define/interface.ts', import.meta.url)),
+      '@constDefine': fileURLToPath(new URL('./src/define/constDefine.ts', import.meta.url)),
+      '@stores': fileURLToPath(new URL('./src/stores', import.meta.url)),
     },
   },
 })

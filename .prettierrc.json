@@ -1,7 +1,8 @@
 {
-  "$schema": "https://json.schemastore.org/prettierrc",
-  "semi": false,
-  "singleQuote": true,
-  "printWidth": 200,
-  "endOfLine": "auto"
+    "$schema": "https://json.schemastore.org/prettierrc",
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 200,
+    "endOfLine": "auto",
+    "bracketSpacing": true
 }

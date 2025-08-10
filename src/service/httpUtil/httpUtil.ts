@@ -33,11 +33,11 @@ class AxiosUtil {
         // loading/token
         // console.log('全局请求成功的拦截')
 
-        const token = localCache.getItem(CONST.LOGIN_TOKEN)
-        if(config.headers && token)
-        {
-          config.headers.Authorization = 'Bearer ' + token
-        }
+        // const token = localCache.getItem(CONST.LOGIN_TOKEN)
+        // if(config.headers && token)
+        // {
+        //   config.headers.Authorization = 'Bearer ' + token
+        // }
 
         return config
       },

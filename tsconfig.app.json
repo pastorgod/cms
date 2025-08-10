@@ -15,6 +15,10 @@
       "@view/*": ["./src/view/*"],
       "@service/*": ["./src/service/*"],
       "@utils/*": ["./src/utils/*"],
+      "@stores/*": ["./src/stores/*"],
+      
+      "@interface": ["./src/define/interface.ts"],
+      "@constDefine": ["./src/define/constDefine.ts"],
     }
   }
 }

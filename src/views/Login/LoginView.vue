@@ -3,45 +3,73 @@
 <template>
 
    <div class = "LoginView">
-      <span class="projects">
+      <div class="projects">
         <div class="box-container">
-          <a class="box-item" href="#"></a>
-          <a class="box-item" href="#"></a>
-          <a class="box-item" href="#"></a>
-          <a class="box-item" href="#"></a>
-          <a class="box-item" href="#"></a>
-          <a class="box-item" href="#"></a>
-          <a class="box-item" href="#"></a>
-          <a class="box-item" href="#"></a>
-          <a class="box-item" href="#"></a>
+          <div 
+            class="project-card" 
+            :class="{ 'selected': project.id === selectedProjectId }"
+            v-for="project in projects" 
+            :key="project.id"
+            :title="project.desc"
+            @click="selectProject(project.id)"
+          >
+            <img :src="project.icon" :alt="project.name" class="project-icon" />
+            <div class="project-name">{{ project.name }}</div>
+          </div>
         </div>
-      </span>
-      <span class="line"></span>
-      <span class="loginPanel"><LoginPanel /></span>
+      </div>
+      <div class="divider"></div>
+      <div class="loginPanel"><LoginPanel /></div>
    </div>
 </template>
-
 
 <!-- #region 代码 -->
 <!-- =============================代码============================ -->
 <script setup lang="ts">
 
-
+// ┌────────────────────────────────────────────────────────────────────────────────────┐
+//                                       "导入模块"                                      
+// └────────────────────────────────────────────────────────────────────────────────────┘
+import { ref, onMounted } from 'vue'
+import { localCache } from '@utils/cacheUtils.ts'
+import type { Project } from '@/define/interface'
 import LoginPanel from '@/views/Login/LoginPanel.vue'
+import constDefine from '@constDefine'
+import useLoginStore from '@/stores/loginStore'
+const loginStore = useLoginStore()
 
-//传入属性参数
-//import { type Action } from '@/config/delegate'
+// ┌────────────────────────────────────────────────────────────────────────────────────┐
+//                                       "成员函数"                                      
+// └────────────────────────────────────────────────────────────────────────────────────┘
+const projects = ref<Project[]>([])
+const selectedProjectId = ref<number>(0)
 
-const props = defineProps<{
-  //foo: string
-  //func: Aciton
-}>()
+// ┌────────────────────────────────────────────────────────────────────────────────────┐
+//                                       "挂载"                                      
+// └────────────────────────────────────────────────────────────────────────────────────┘
+onMounted(async () => {
+  try {
+    //读取配置并且加载,生成工程卡片
+    const response = await fetch('/src/assets/config/projects.json')
+    projects.value = await response.json()
 
-//子控件发出事件
-const emit = defineEmits<{
-  //change: [id: number] // 具名元组语法
-}>()
+    //工程卡片生成之后,本地判断选中的什么卡片，并且该卡片被选中
+    const id = localCache.getCache(constDefine.PROJECT_ID)
+    if (id) {
+      selectedProjectId.value = id
+    }
+  } catch (error) {
+    console.error('加载项目配置失败:', error)
+  }
+})
 
+// ┌────────────────────────────────────────────────────────────────────────────────────┐
+//                                    "卡片选择处理"                                      
+// └────────────────────────────────────────────────────────────────────────────────────┘
+const selectProject = (projectId: number) => {
+  selectedProjectId.value = projectId
+  loginStore.SetProjectId(projectId)
+}
 </script>
 
 
@@ -93,21 +121,47 @@ const emit = defineEmits<{
   box-sizing: border-box;
 }
 
-.box-item {
+.project-card {
   width: 100%;
   height: 100%;
-  background-color: rgba(53, 53, 109, 0.137);
   border-radius: 4px;
+  background-color: rgba(219, 219, 241, 0.137);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &.selected,
+  &:hover {
+    background-color: #409eff;
+    color: white;
+
+    .project-name {
+      color: white;
+    }
+  }
+
+  .project-icon {
+    width: 72px;
+    height: 72px;
+    margin-bottom: 20px;
+    object-fit: contain;
+  }
+
+  .project-name {
+    color: #333333;
+    font-size: 18px;
+  }
 }
 
-.line {
-  margin: 0 100px; // 调整间距
+.divider {
+  margin: 0 100px;
   width: 1px;
   height: 500px;
-  background-color: #cccccccc;
-  box-shadow: 1px 0 4px rgba(0, 0, 0, 0.1); // 为线条添加轻微阴影
+  background-color: #cccccc;
+  box-shadow: 1px 0 4px rgba(0, 0, 0, 0.1);
 }
-
-
 </style>

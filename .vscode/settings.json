@@ -17,5 +17,10 @@
     "**/.DS_Store": true,
     "**/node_modules": true
   },
-  "editor.minimap.sectionHeaderFontSize": 9
+  "editor.minimap.sectionHeaderFontSize": 9,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": "active",
+  "editor.renderWhitespace": "none",
+  "files.trimFinalNewlines": false,
+  "files.insertFinalNewline": true
 }

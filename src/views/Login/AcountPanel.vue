@@ -2,13 +2,14 @@
 <!-- =============================模板============================ -->
 <template>
   <div class="AcountPanel">
-    <el-form :model="form" label-width="auto" style="max-width: 600px" :rules="rules" ref="formRef">
-      <el-form-item label="帐  号" prop="accountName">
+    {{ form.username }}
+    <el-form :model="form" label-width="auto" style="max-width: 600px" :rules="accountRules" status-icon ref="accountFormRef" label-position="left" >
+      <el-form-item label="帐  号" prop="username">
         <el-input v-model="form.username" placeholder="请输入账号" />
       </el-form-item>
-      <el-form-item label="密  码" prop="accountPassword">
+      <!-- <el-form-item label="密  码" prop="username">
         <el-input v-model="form.password" show-password placeholder="******" />
-      </el-form-item>
+      </el-form-item> -->
     </el-form>
   </div>
 </template>
@@ -17,45 +18,27 @@
 <script setup lang="ts">
 import { ref, reactive, computed, watch, onMounted, resolveComponent } from 'vue'
 import { type FormRules, type FormInstance } from 'element-plus'
-//方法委托类Action-Action6
-//import { type Action } from '@/config/delegate'
 
-//定义参数
-const props = defineProps<{
-  //foo: string
-  //func: Aciton
-}>()
-
-const state = reactive({
-  //foo: props.foo,
-  //func: props.func,
-})
-
-//定义事件
-const emit = defineEmits<{
-  //change: [id: number] // 具名元组语法
-}>()
-
-const formRef = ref<FormInstance>()
+const accountFormRef = ref<FormInstance>()
 
 //绑定表单对象
 const form = reactive({
   username: '',
   password: '',
 })
-
-const rules: FormRules = {
-  accountName: [
+const accountRules: FormRules = {
+  username: [
     { required: true, message: '请输入账号', trigger: 'blur' },
-    { min: 6, max: 20, message: '6-20位的字符', trigger: 'change' },
+    { min: 1, max: 20, message: '6-20位的字符', trigger: 'blur' },
   ],
-  accountPassword: [],
+  password: [],
 }
 
 //执行登录逻辑
 function GetUserName():string {
-  formRef.value
-  if(formRef.value?.validate()){
+  console.log('用户名12：', form.username);
+  if(accountFormRef.value?.validate()){
+    console.log('用户名1：', form.username);
     return form.username;
   }
   return ""

@@ -1,9 +1,23 @@
+# 配置适用于以下文件类型：JavaScript、TypeScript、Vue、CSS及其预处理器等文件
 [*.{js,jsx,mjs,cjs,ts,tsx,mts,cts,vue,css,scss,sass,less,styl}]
-charset = utf-8
-indent_size = 2
-indent_style = space
-insert_final_newline = true
-trim_trailing_whitespace = true
 
-end_of_line = lf
+# 设置文件编码为UTF-8，默认值：utf-8
+charset = utf-8
+
+# 设置缩进大小为4个空格，默认值：4
+indent_size = 4
+
+# 使用空格进行缩进，默认值：space（可选tab）
+indent_style = space
+
+# 在文件末尾自动插入换行符，默认值：true
+insert_final_newline = true
+
+# 不自动删除行尾空白字符，默认值：true（会删除空白字符）
+trim_trailing_whitespace = false
+
+# 设置换行符为CRLF（Windows系统），默认值：lf（Unix/Linux/macOS系统）
+end_of_line = crlf
+
+# 设置每行最大字符长度为100个字符，默认值：80
 max_line_length = 100

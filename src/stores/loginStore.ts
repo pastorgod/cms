@@ -1,27 +1,38 @@
 import { defineStore } from 'pinia'
+import constDefine from '@constDefine'
+import {localCache} from '@utils/cacheUtils.ts'
 
 /**
  * 登录状态管理
  *
  */
 const useLoginStore = defineStore('login', {
+  
   state: () => ({
-    username: '',
-    password: '',
+    username: localCache.getCache(constDefine.USER_NAME) || '',
+    projectId: localCache.getCache(constDefine.PROJECT_ID) || 0,
   }),
   getters: {
-    displayUserName(state){
-      return state.username + "lxx"
-    }
+    GetUserName(state){
+      return state.username
+    },
+    GetProjectId(state){
+      return state.projectId
+    },
   },
   actions: {
-    setUsername(username: string) {
+
+    //保存内存，其他地方调用
+    SetLoginInfo(username: string,projectId: number) {
       this.username = username
+      this.projectId = projectId
     },
-    setPassword(password: string) {
-      this.password = password
-    },
-  },
+
+    //保存项目ID
+    SetProjectId(projectId: number) {
+      this.projectId = projectId
+    }
+  }
 })
 
 export default useLoginStore
