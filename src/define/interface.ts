@@ -1,9 +1,9 @@
 
 // 主界面项目定义
-interface Project {
+interface IProject {
   name: string
   id: number
   desc: string
   icon: string
 }
-export type { Project }
+export type { IProject }

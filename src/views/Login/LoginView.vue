@@ -27,26 +27,13 @@
 <!-- =============================代码============================ -->
 <script setup lang="ts">
 
-// ┌────────────────────────────────────────────────────────────────────────────────────┐
-//                                       "导入模块"                                      
-// └────────────────────────────────────────────────────────────────────────────────────┘
-import { ref, onMounted } from 'vue'
-import { localCache } from '@utils/cacheUtils.ts'
-import type { Project } from '@/define/interface'
-import LoginPanel from '@/views/Login/LoginPanel.vue'
-import constDefine from '@constDefine'
-import useLoginStore from '@/stores/loginStore'
-const loginStore = useLoginStore()
+import {ref, onMounted, GetLocalCache ,constDefine,loginStore,type IProject}  from '@/utils/Framework.ts'
 
-// ┌────────────────────────────────────────────────────────────────────────────────────┐
-//                                       "成员函数"                                      
-// └────────────────────────────────────────────────────────────────────────────────────┘
-const projects = ref<Project[]>([])
+import LoginPanel from '@/views/Login/LoginPanel.vue'
+
+const projects = ref<IProject[]>([])
 const selectedProjectId = ref<number>(0)
 
-// ┌────────────────────────────────────────────────────────────────────────────────────┐
-//                                       "挂载"                                      
-// └────────────────────────────────────────────────────────────────────────────────────┘
 onMounted(async () => {
   try {
     //读取配置并且加载,生成工程卡片
@@ -54,7 +41,7 @@ onMounted(async () => {
     projects.value = await response.json()
 
     //工程卡片生成之后,本地判断选中的什么卡片，并且该卡片被选中
-    const id = localCache.getCache(constDefine.PROJECT_ID)
+    const id = GetLocalCache(constDefine.PROJECT_ID)
     if (id) {
       selectedProjectId.value = id
     }

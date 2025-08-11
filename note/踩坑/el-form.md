@@ -18,3 +18,5 @@ const accountRules: FormRules = {
 这里的form对象的属性名
 和表单验证的prop属性名必须一致
 否则会报验证错误
+
+

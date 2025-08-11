@@ -1,43 +1,68 @@
-enum CacheType {
-  Local = 'localStorage',
-  Session = 'sessionStorage'
+// Local storage functions
+function SetLocalCache(key: string, value: any) {
+  if (value)
+    localStorage.setItem(key, JSON.stringify(value))
 }
 
-class Cache{
-    storage: Storage;
-    constructor(type: CacheType){
-        this.storage = type === CacheType.Local ? localStorage : sessionStorage
-    }
-
-    setCache(key:string,value:any){
-        if(value)
-            this.storage.setItem(key,JSON.stringify(value))
-    }
-
-    getCache(key:string){
-        const value = this.storage.getItem(key)
-        if(value)
-            return JSON.parse(value)
-    }
-
-    removeCache(key:string){
-        this.storage.removeItem(key)
-    }
-
-    clearCache(){
-        this.storage.clear()
-    }
-
-    getBoolean(key:string):boolean
-    {
-        const v = this.getCache(key)
-        if(v)
-            return Number(v) === 1
-        
-        return false
-    }
+function GetLocalCache(key: string) {
+  const value = localStorage.getItem(key)
+  if (value)
+    return JSON.parse(value)
 }
 
-const localCache = new Cache(CacheType.Local)
-const sessionCache = new Cache(CacheType.Session)
-export { localCache, sessionCache }
+function RemoveLocalCache(key: string) {
+  localStorage.removeItem(key)
+}
+
+function ClearLocalCache() {
+  localStorage.clear()
+}
+
+function GetLocalBoolean(key: string): boolean {
+  const v = GetLocalCache(key)
+  if (v)
+    return Number(v) === 1
+
+  return false
+}
+
+// Session storage functions
+function SetSessionCache(key: string, value: any) {
+  if (value)
+    sessionStorage.setItem(key, JSON.stringify(value))
+}
+
+function GetSessionCache(key: string) {
+  const value = sessionStorage.getItem(key)
+  if (value)
+    return JSON.parse(value)
+}
+
+function RemoveSessionCache(key: string) {
+  sessionStorage.removeItem(key)
+}
+
+function ClearSessionCache() {
+  sessionStorage.clear()
+}
+
+function GetSessionBoolean(key: string): boolean {
+  const v = GetSessionCache(key)
+  if (v)
+    return Number(v) === 1
+
+  return false
+}
+
+export { 
+  SetLocalCache,
+  GetLocalCache,
+  RemoveLocalCache,
+  ClearLocalCache,
+  GetLocalBoolean,
+  SetSessionCache,
+  GetSessionCache,
+  RemoveSessionCache,
+  ClearSessionCache,
+  GetSessionBoolean
+}

@@ -32,23 +32,31 @@
 
 <!-- =============================代码============================ -->
 <script setup lang="ts">
-import { GetLocalBoolean, RemoveLocalCache, SetLocalCache ,router,ref, watch,ElMessage,constDefine,IsNullOrEmpty,loginStore} from '@/utils/Framework'
 
+import { ref, watch } from 'vue'
 import AcountPanel from './AcountPanel.vue'
 import TabSlot from './TabSlot.vue'
+import { ElMessage } from 'element-plus'
+
+import { stringUtils } from '@utils/stringUtils'
+import { localCache } from '@/utils/cacheUtils'
+import constDefine from '@/define/constDefine'
+const { IsEmpty } = stringUtils()
 
 // 标签页相关数据
 const activeName = ref('account')
+import useLoginStore from '@stores/loginStore'
+const loginStore = useLoginStore()
 
 // 表单相关数据
 const formRef = ref<InstanceType<typeof AcountPanel>>()
 
 // 复选框相关数据
-const isSaveRecord = ref(GetLocalBoolean(constDefine.IS_SAVE_RECORD))
+const isSaveRecord = ref(localCache.getBoolean(constDefine.IS_SAVE_RECORD))
 
 // 监听引用值变化
 watch(isSaveRecord, (newValue) => {
-    SetLocalCache(constDefine.IS_SAVE_RECORD, newValue ? 1 : 0)
+    localCache.setCache(constDefine.IS_SAVE_RECORD, newValue ? 1 : 0)
 })
 
 //点击登录按钮
@@ -67,7 +75,7 @@ function loginHanle() {
 
     //获取子组件实例
     let username = formRef.value?.GetUserName()
-    if (IsNullOrEmpty(username)) {
+    if (IsEmpty(username)) {
         ElMessage.error('用户名输入不合法')
         return
     }
@@ -80,14 +88,12 @@ function loginHanle() {
 
     //根据是否保存记录，对本地缓存进行操作
     if (isSaveRecord.value) {
-        SetLocalCache(constDefine.USER_NAME, username)
-        SetLocalCache(constDefine.PROJECT_ID, projectId)
+        localCache.setCache(constDefine.USER_NAME, username)
+        localCache.setCache(constDefine.PROJECT_ID, projectId)
     } else {
-        RemoveLocalCache(constDefine.USER_NAME)
-        RemoveLocalCache(constDefine.PROJECT_ID)
+        localCache.removeCache(constDefine.USER_NAME)
+        localCache.removeCache(constDefine.PROJECT_ID)
     }
-
-    router.push('/main')
 }
 </script>
 

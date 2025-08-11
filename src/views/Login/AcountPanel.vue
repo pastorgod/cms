@@ -1,61 +1,58 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <!-- =============================模板============================ -->
 <template>
-  <div class="AcountPanel">
-    {{ form.username }}
-    <el-form :model="form" label-width="auto" style="max-width: 600px" :rules="accountRules" status-icon ref="accountFormRef" label-position="left" >
-      <el-form-item label="帐  号" prop="username">
-        <el-input v-model="form.username" placeholder="请输入账号" />
-      </el-form-item>
-      <!-- <el-form-item label="密  码" prop="username">
-        <el-input v-model="form.password" show-password placeholder="******" />
-      </el-form-item> -->
-    </el-form>
-  </div>
+    <div class="AcountPanel">
+        {{ form.username }}
+        <el-form :model="form" label-width="auto" style="max-width: 600px" :rules="accountRules" status-icon ref="accountFormRef" label-position="left">
+            <el-form-item label="帐  号" prop="username">
+                <el-input v-model="form.username" placeholder="请输入账号" />
+            </el-form-item>
+            <!-- <el-form-item label="密  码" prop="username">
+            <el-input v-model="form.password" show-password placeholder="******" />
+        </el-form-item> -->
+        </el-form>
+    </div>
 </template>
 
 <!-- =============================代码============================ -->
 <script setup lang="ts">
-import { ref, reactive, computed, watch, onMounted, resolveComponent } from 'vue'
-import { type FormRules, type FormInstance } from 'element-plus'
+
+import { ref, reactive, computed, watch, onMounted, resolveComponent, type FormRules, type FormInstance } from '@/utils/Framework.ts'
 
 const accountFormRef = ref<FormInstance>()
 
 //绑定表单对象
 const form = reactive({
-  username: '',
-  password: '',
+    username: '',
+    password: '',
 })
+
 const accountRules: FormRules = {
-  username: [
-    { required: true, message: '请输入账号', trigger: 'blur' },
-    { min: 1, max: 20, message: '6-20位的字符', trigger: 'blur' },
-  ],
-  password: [],
+    username: [
+        { required: true, message: '请输入账号', trigger: 'blur' },
+        { min: 1, max: 20, message: '6-20位的字符', trigger: 'blur' },
+    ],
+    password: [],
 }
 
 //执行登录逻辑
-function GetUserName():string {
-  console.log('用户名12：', form.username);
-  if(accountFormRef.value?.validate()){
-    console.log('用户名1：', form.username);
-    return form.username;
-  }
-  return ""
+function GetUserName(): string {
+    if (accountFormRef.value?.validate()) {
+        return form.username
+    }
+    return ''
 }
 
 defineExpose({
-  GetUserName,
+    GetUserName,
 })
-
-
 </script>
 
 <!-- =============================样式============================ -->
 <style lang="less" scoped>
 .AcountPanel {
-  width: 100%;
-  height: 100%;
-  // background-color: #87ceeb;
+    width: 100%;
+    height: 100%;
+    // background-color: #87ceeb;
 }
 </style>

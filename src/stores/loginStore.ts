@@ -9,8 +9,8 @@ import {localCache} from '@utils/cacheUtils.ts'
 const useLoginStore = defineStore('login', {
   
   state: () => ({
-    username: localCache.getCache(constDefine.USER_NAME) || '',
-    projectId: localCache.getCache(constDefine.PROJECT_ID) || 0,
+    username: GetLocalCache(constDefine.USER_NAME) || '',
+    projectId: GetLocalCache(constDefine.PROJECT_ID) || 0,
   }),
   getters: {
     GetUserName(state){
