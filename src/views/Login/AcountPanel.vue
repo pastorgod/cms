@@ -1,4 +1,4 @@
-<!-- eslint-disable vue/multi-word-component-names -->
+eslint-disable vue/multi-word-component-names
 <!-- =============================模板============================ -->
 <template>
     <div class="AcountPanel">

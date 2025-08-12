@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import constDefine from '@constDefine'
-import {localCache} from '@utils/cacheUtils.ts'
+import {GetLocalCache} from '@utils/cacheUtils.ts'
 
 /**
  * 登录状态管理

@@ -1,3 +1,4 @@
+console.log('framework.ts 222')
 import { ref, reactive, computed, watch, onMounted, onUnmounted, resolveComponent } from 'vue'
 import { 
   SetLocalCache,

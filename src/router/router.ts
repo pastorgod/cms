@@ -1,17 +1,8 @@
-import NotFound from '@/views/404/NotFound.vue'
-import LoginView from '@/views/Login/LoginView.vue'
-import Main from '@/views/Main/MainView.vue'
+// import NotFound from '@/views/404/NotFound.vue'      这种是立即加载模式，开始就加载所有组件，顺序不太好
 
+import constDefine from '@/define/constDefine';
+import { GetLocalCache } from '@/utils/cacheUtils';
 import { createRouter, createWebHistory } from 'vue-router'
-import constDefine from '@/define/constDefine'
-
-console.log('111');
-import useLoginStore from '@/stores/loginStore'
-const loginStore = useLoginStore()
-
-
-import { stringUtils } from '@utils/stringUtils'
-const { IsNullOrEmpty } = stringUtils()
 
 const router = createRouter({
     history: createWebHistory(),
@@ -24,20 +15,40 @@ const router = createRouter({
         {
             path: '/main',
             name: 'main',
-            component: Main,
+            component: () => import('@/views/Main/MainView.vue')
         },
         {
             path: '/login',
             name: 'login',
-            component: LoginView,
+            component: () => import('@/views/Login/LoginView.vue')
         },
         {
             path: '/:pathMatch(.*)',
-            component: NotFound,
+            component: () => import('@/views/404/NotFound.vue')
         },
     ],
 })
 
+// 在路由守卫中动态导入 Framework
+router.beforeEach((to, from, next) => {
+    
+     console.log('router beforeEach')
+    if (to.name === 'login') {
+        next()
+        return
+    }
 
+    // 内存中没有登录信息
+    if (GetLocalCache(constDefine.USER_NAME) || GetLocalCache(constDefine.PROJECT_ID)) {
+        next({ name: 'login' })
+        return
+    }
+    
+    next()
+})
+
+// router.afterEach((to, from) => { 
+//     console.log('afterEach');
+// })
 
 export default router

@@ -12,6 +12,7 @@
 <!-- =============================代码============================ -->
 <script setup lang="ts">
 
+console.log('1111 App.vue')
 import { ref, onMounted, onUnmounted } from '@/utils/Framework.ts'
 
 const x = ref(0)
