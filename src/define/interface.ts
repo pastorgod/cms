@@ -1,9 +1,22 @@
-
 // 主界面项目定义
 interface IProject {
-  name: string
-  id: number
-  desc: string
-  icon: string
+    name: string
+    id: number
+    desc: string
+    icon: string
 }
-export type { IProject }
+
+interface IMenuChild {
+    title: string
+    id: number
+    router: string
+}
+
+interface IMenu {
+    title: string
+    icon: string
+    id: number
+    children: IMenuChild[]
+}
+
+export type { IProject,IMenu }

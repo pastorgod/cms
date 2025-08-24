@@ -29,20 +29,21 @@ const router = createRouter({
     ],
 })
 
-// 在路由守卫中动态导入 Framework
+//- 路由守卫
 router.beforeEach((to, from, next) => {
     
-     console.log('router beforeEach')
+    console.log('router beforeEach')
     if (to.name === 'login') {
         next()
         return
     }
 
     // 内存中没有登录信息
-    if (GetLocalCache(constDefine.USER_NAME) || GetLocalCache(constDefine.PROJECT_ID)) {
-        next({ name: 'login' })
-        return
-    }
+    // if (GetLocalCache(constDefine.USER_NAME) || GetLocalCache(constDefine.PROJECT_ID)) {
+    //     console.log('内存中没有登录信息')
+    //     next({ name: 'login' })
+    //     return
+    // }
     
     next()
 })

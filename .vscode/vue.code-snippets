@@ -15,8 +15,6 @@
             "<!-- =============================代码============================ -->",
             "<script setup lang=\"ts\">",
             "",
-            "import { GetLocalBoolean, RemoveLocalCache, SetLocalCache ,router,ref, watch,ElMessage,constDefine,IsNullOrEmpty,loginStore} from '@/utils/Framework'",
-            "",
             "//方法委托类Action-Action6",
             "//import { type Action } from '@/config/delegate'",
             "",

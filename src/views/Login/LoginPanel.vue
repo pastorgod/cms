@@ -32,10 +32,18 @@
 
 <!-- =============================代码============================ -->
 <script setup lang="ts">
-import { GetLocalBoolean, RemoveLocalCache, SetLocalCache ,router,ref, watch,ElMessage,constDefine,IsNullOrEmpty,loginStore} from '@/utils/Framework'
-
+import { SetLocalCache,RemoveLocalCache,GetLocalBoolean,} from '@/utils/cacheUtils'
+import { ElMessage } from 'element-plus'
+import {ref,watch} from 'vue'
+import constDefine from '@/define/constDefine'
+import {IsNullOrEmpty} from '@/utils/stringUtils'
+import {useRouter} from 'vue-router'
 import AcountPanel from './AcountPanel.vue'
 import TabSlot from './TabSlot.vue'
+import useLoginStore from '@/stores/loginStore'
+
+const loginStore = useLoginStore()
+const router = useRouter()
 
 // 标签页相关数据
 const activeName = ref('account')
@@ -53,6 +61,7 @@ watch(isSaveRecord, (newValue) => {
 
 //点击登录按钮
 function loginHanle() {
+    
     if (activeName.value === 'qrcode') {
         ElMessage.error('暂不支持这种登录方式')
         return

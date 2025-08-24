@@ -22,3 +22,9 @@ i,
 em {
   font-style: normal;
 }
+
+/* 移除所有 :focus-visible 的 outline */
+// 要不然 el-dropdown 在焦点状态，会显示一个边框，丑丑的
+*:focus-visible {
+    outline: none;
+}

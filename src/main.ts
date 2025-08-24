@@ -2,7 +2,6 @@ import 'normalize.css' // 重置样式
 import './assets/css/index.less' //导入通用样式
 import 'element-plus/dist/index.css' //element-plus样式
 
-// 创建APP 和pinia，以及element-plus 等，不常用，所以 不放Framework
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 

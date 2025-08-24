@@ -27,9 +27,15 @@
 <!-- =============================代码============================ -->
 <script setup lang="ts">
 
-import {ref, onMounted, GetLocalCache ,constDefine,loginStore,type IProject}  from '@/utils/Framework.ts'
-
+import { type IProject } from '@/define/interface'
+import {ref,onMounted} from 'vue'
 import LoginPanel from '@/views/Login/LoginPanel.vue'
+
+import { GetLocalCache } from '@/utils/cacheUtils'
+import constDefine from '@/define/constDefine'
+
+import useLoginStore from '@/stores/loginStore'
+const loginStore = useLoginStore()
 
 const projects = ref<IProject[]>([])
 const selectedProjectId = ref<number>(0)
@@ -79,7 +85,7 @@ const selectProject = (projectId: number) => {
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); // 添加阴影效果
+  box-shadow: 0 4px 12px #00000026; // 添加阴影效果
 }
 
 .content-wrapper {

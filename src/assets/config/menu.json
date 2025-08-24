@@ -1,0 +1,56 @@
+[
+    {
+        "title": "菜单一",
+        "icon":"location",
+        "id": 10000,
+        "children": [
+            {
+                "title": "子菜单1",
+                "id": 10001,
+                "router":"/submenu1"
+            },
+            {
+                "title": "子菜单2",
+                "id": 10002,
+                "router":"/submenu2"
+            },
+            {
+                "title": "子菜单3",
+                "id": 10003,
+                "router":"/submenu3"
+            },
+            {
+                "title": "子菜单4",
+                "id": 10004,
+                "router":"/submenu4"
+            }
+        ]
+    },
+    {
+        "title": "菜单二",
+        "icon":"location",
+        "id": 20000,
+        "children": [
+            {
+                "title": "子菜单1",
+                "id": 20001,
+                "router":"/submenu1"
+            },
+            {
+                "title": "子菜单2",
+                "id": 20002,
+                "router":"/submenu2"
+            },
+            {
+                "title": "子菜单3",
+                "id": 20003,
+                "router":"/submenu3"
+            },
+            {
+                "title": "子菜单4",
+                "id": 20004,
+                "router":"/submenu4"
+            }
+        ]
+    }
+]

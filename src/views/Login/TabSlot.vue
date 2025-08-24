@@ -4,9 +4,8 @@
   <div class="TabSlot">
     <span class="tabs-icon">
       <el-icon :size="size">
-        <!-- <component :is="icon" /> -->
         <!--  这里是一个动态组件，is绑定已经注册的组件名也是可以的，习惯起见,自己获取组件再传进来吧 -->
-        <component :is="resolveComponent(icon)" />
+        <component :is="icon" />
       </el-icon>
     </span>
     <span>{{ label }}</span>
@@ -15,7 +14,7 @@
 
 <!-- =============================代码============================ -->
 <script setup lang="ts">
-import { ref, computed, watch, onMounted, resolveComponent } from '@/utils/Framework.ts'
+import {resolveComponent } from 'vue'
 
 //定义参数
 defineProps<{
