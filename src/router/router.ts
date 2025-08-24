@@ -15,7 +15,15 @@ const router = createRouter({
         {
             path: '/main',
             name: 'main',
-            component: () => import('@/views/Main/MainView.vue')
+            component: () => import('@/views/Main/MainView.vue'),
+            //使用动态路由，替换
+            // children: [
+            //     {
+            //         path: '/main/systemInfo',
+            //         name: 'systemInfo',
+            //         component: () => import('@/views/Main/SystemInfo.vue'),
+            //     },
+            // ],
         },
         {
             path: '/login',

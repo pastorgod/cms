@@ -18,7 +18,7 @@
 
 <!-- =============================代码============================ -->
 <script setup lang="ts">
-import HeadInfo from '@/views/Main/c-comps/HeadInfo.vue'
+import HeadInfo from '@/views/Main/HeadInfo.vue'
 </script>
 
 <!-- =============================样式============================ -->

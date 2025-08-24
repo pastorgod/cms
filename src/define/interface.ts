@@ -9,7 +9,7 @@ interface IProject {
 interface IMenuChild {
     title: string
     id: number
-    router: string
+    url: string
 }
 
 interface IMenu {
@@ -19,4 +19,4 @@ interface IMenu {
     children: IMenuChild[]
 }
 
-export type { IProject,IMenu }
+export type { IProject,IMenu,IMenuChild }

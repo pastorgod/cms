@@ -7,22 +7,22 @@
             {
                 "title": "子菜单1",
                 "id": 10001,
-                "router":"/submenu1"
+                "url":"/Main/SystemInfo"
             },
             {
                 "title": "子菜单2",
                 "id": 10002,
-                "router":"/submenu2"
+                "url":"/Main/Submenu2"
             },
             {
                 "title": "子菜单3",
                 "id": 10003,
-                "router":"/submenu3"
+                "url":"/Main/Submenu3"
             },
             {
                 "title": "子菜单4",
                 "id": 10004,
-                "router":"/submenu4"
+                "url":"/Main/Submenu4"
             }
         ]
     },
@@ -34,22 +34,22 @@
             {
                 "title": "子菜单1",
                 "id": 20001,
-                "router":"/submenu1"
+                "url":"/Main/Submenu1"
             },
             {
                 "title": "子菜单2",
                 "id": 20002,
-                "router":"/submenu2"
+                "url":"/Main/Submenu2"
             },
             {
                 "title": "子菜单3",
                 "id": 20003,
-                "router":"/submenu3"
+                "url":"/Main/Submenu3"
             },
             {
                 "title": "子菜单4",
                 "id": 20004,
-                "router":"/submenu4"
+                "url":"/Main/Submenu4"
             }
         ]
     }

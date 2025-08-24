@@ -4,7 +4,7 @@
     <div class="main">
         <el-container class=".main-container">
             <el-aside :width="(isCollapse ? 60 : 300).toString() + 'px'">
-                <div :class="isCollapse ? 'logo-collapse' : 'logo-expand'" @click="changeCollapse">
+                <div class="logo-expand" :class="{ 'logo-collapse': isCollapse }" @click="clickCollapseHandle">
                     <div>
                         <img src="@img/logo.png" width="48" height="48" alt="牧" />
                     </div>
@@ -13,7 +13,7 @@
                     </div>
                 </div>
                 <div>
-                    <el-menu default-active="10001" :collapse="isCollapse" @open="handleOpen" @close="handleClose">
+                    <el-menu default-active="10001" :collapse="isCollapse">
                         <template v-for="item in menuList" :key="item.id">
                             <el-sub-menu :index="item.id.toString()">
                                 <!-- 菜单标题 -->
@@ -23,8 +23,7 @@
                                 </template>
 
                                 <template v-for="child in item.children" :key="child.id">
-                                    <el-menu-item :index="child.id.toString()">
-                                        <!-- <el-icon><icon-menu /></el-icon> -->
+                                    <el-menu-item :index="child.id.toString()" @click="clickItemHandle(child)">
                                         <template #title>
                                             {{ child.title }}
                                         </template>
@@ -39,7 +38,9 @@
                 <el-header>
                     <HeadView />
                 </el-header>
-                <el-main>Main</el-main>
+                <el-main>
+                    <router-view></router-view>
+                </el-main>
             </el-container>
         </el-container>
     </div>
@@ -49,45 +50,39 @@
 <script setup lang="ts">
 //pinia
 import type { IMenu } from '@/define/interface'
-import useLoginStore from '@/stores/loginStore'
 import HeadView from '@/views/Main/HeadView.vue'
-const loginStore = useLoginStore()
-
-import { resolveComponent, ref, onMounted } from 'vue'
+import router from '@/router/router'
+import { ref, onMounted } from 'vue'
+import { createMainRouteNode } from '@/utils/routerUtils'
 
 const isCollapse = ref(false)
 
-function handleOpen(key: string, keyPath: string[]) {}
-function handleClose(key: string, keyPath: string[]) {}
-
-function changeCollapse() {
+//点击折叠按钮
+function clickCollapseHandle() {
     isCollapse.value = !isCollapse.value
 }
+//点击条目，跳转界面
+function clickItemHandle(child) {
+    router.push(child.url)
+}
 
+//菜单数据
 const menuList = ref<IMenu[]>([])
-
 onMounted(async () => {
     try {
-        const response = await fetch('/src/assets/config/menu.json')
+        const response = await fetch('/src/assets/config/main_menu.json')
         menuList.value = await response.json()
+        
+        //动态添加路由,通过配置注册路由,不用每次往 rounter里面加了
+        for (const menu of menuList.value) {
+            for (const child of menu.children) {
+                router.addRoute('main',createMainRouteNode(child.url) )
+            }
+        }
     } catch (error) {
         console.error('加载菜单配置失败:', error)
     }
 })
-
-//方法委托类Action-Action6
-//import { type Action } from '@/config/delegate'
-
-//定义参数
-const props = defineProps<{
-    //foo: string
-    //func: Aciton
-}>()
-
-//定义事件
-const emit = defineEmits<{
-    //change: [id: number] // 具名元组语法
-}>()
 </script>
 
 <!-- =============================样式============================ -->
@@ -152,7 +147,7 @@ const emit = defineEmits<{
             justify-content: center;
             align-items: center;
             background-color: #1f8ff8;
-            cursor:pointer;
+            cursor: pointer;
         }
 
         .logo-expand {
@@ -160,7 +155,7 @@ const emit = defineEmits<{
             align-items: center;
             height: 80px;
             background-color: #1f8ff8;
-            cursor:pointer;
+            cursor: pointer;
         }
         .logo-expand > div:first-child {
             margin-left: 10px;
