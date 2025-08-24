@@ -23,7 +23,7 @@ const createMainRouteNode = (url:string) => {
     return {
         path: url.toLowerCase(),
         name: name.toLowerCase(),
-        component: () => import(/* @vite-ignore */`/src/views/${url}.vue`),
+        component: () => import(/* @vite-ignore */`/src/views${url}.vue`),
     }
 }
 
