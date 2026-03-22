@@ -35,7 +35,6 @@
                     </el-dropdown-menu>
                 </template>
             </el-dropdown>
-
         </div>
     </div>
 </template>
@@ -116,7 +115,7 @@ const emit = defineEmits<{
     }
 }
 :global(.el-dropdown-menu__item) {
-        line-height: 66px !important;
+        line-height: 22px !important;
         padding: 6px 22px; 
     }
 </style>

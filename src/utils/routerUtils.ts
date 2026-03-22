@@ -20,6 +20,7 @@ const createMainRouteNode = (url:string) => {
     // console.log(`动态导入 url = ${url}  name = ${name} filePathSegment = ${filePathSegment}`)
     // const filePath = `/src/views/${filePathSegment}.vue`
 
+    console.log(`动态导入 url = ${url.toLowerCase()}  name = ${name}`)
     return {
         path: url.toLowerCase(),
         name: name.toLowerCase(),

@@ -8,7 +8,9 @@
             </el-icon>
         </div>
         <div class="content">
-            <div class="breadcrumb">面包屑</div>
+            <div class="breadcrumb">
+                <HeadCrumb />
+            </div>
             <div class="info">
                 <HeadInfo/>
             </div>
@@ -19,6 +21,7 @@
 <!-- =============================代码============================ -->
 <script setup lang="ts">
 import HeadInfo from '@/views/Main/HeadInfo.vue'
+import HeadCrumb from './HeadCrumb.vue';
 </script>
 
 <!-- =============================样式============================ -->

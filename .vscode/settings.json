@@ -22,5 +22,6 @@
     "editor.guides.bracketPairs": "active",
     "editor.renderWhitespace": "none",
     "files.trimFinalNewlines": false,
-    "files.insertFinalNewline": true
+    "files.insertFinalNewline": true,
+    "terminal.integrated.defaultProfile.windows": "Command Prompt"
 }

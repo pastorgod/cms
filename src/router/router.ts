@@ -1,8 +1,12 @@
 // import NotFound from '@/views/404/NotFound.vue'      这种是立即加载模式，开始就加载所有组件，顺序不太好
 
-import constDefine from '@/define/constDefine';
-import { GetLocalCache } from '@/utils/cacheUtils';
 import { createRouter, createWebHistory } from 'vue-router'
+import constDefine from '@constDefine'
+import { SetLocalCache } from '@/utils/cacheUtils'
+
+// 抓取所有vue文件，防止动态路由的原因，在打包的时候，vue组件被剔除。此举是为了通知vite
+import.meta.glob("/src/views/**/*.vue",{eager:false})
+
 
 const router = createRouter({
     history: createWebHistory(),
@@ -16,14 +20,6 @@ const router = createRouter({
             path: '/main',
             name: 'main',
             component: () => import('@/views/Main/MainView.vue'),
-            //使用动态路由，替换
-            // children: [
-            //     {
-            //         path: '/main/systemInfo',
-            //         name: 'systemInfo',
-            //         component: () => import('@/views/Main/SystemInfo.vue'),
-            //     },
-            // ],
         },
         {
             path: '/login',
@@ -46,12 +42,18 @@ router.beforeEach((to, from, next) => {
         return
     }
 
-    // 内存中没有登录信息
-    // if (GetLocalCache(constDefine.USER_NAME) || GetLocalCache(constDefine.PROJECT_ID)) {
-    //     console.log('内存中没有登录信息')
-    //     next({ name: 'login' })
-    //     return
-    // }
+    //路由为主页某个菜单，存下最近访问的页面
+    if(to.fullPath.startsWith('/main'))
+    {
+       if(to.fullPath != '/main')
+        {
+            SetLocalCache(constDefine.LAST_ACCESS_URL,to.fullPath)
+        } 
+    }
+
+    
+
+
     
     next()
 })

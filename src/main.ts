@@ -24,3 +24,5 @@ app.use(ElementPlus)
 app.use(ElementComp)
 
 app.mount('#app')
+
+console.log('##################')

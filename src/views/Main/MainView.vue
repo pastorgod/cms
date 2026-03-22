@@ -63,12 +63,16 @@ function clickCollapseHandle() {
 }
 //点击条目，跳转界面
 function clickItemHandle(child) {
-    router.push(child.url)
+    router.push(child.url.toLowerCase())
 }
 
 //菜单数据
 const menuList = ref<IMenu[]>([])
 onMounted(async () => {
+
+    console.log('onMountedonMountedonMountedonMounted')
+
+    let firstUrl:string | undefined = undefined
     try {
         const response = await fetch('/src/assets/config/main_menu.json')
         menuList.value = await response.json()
@@ -77,11 +81,18 @@ onMounted(async () => {
         for (const menu of menuList.value) {
             for (const child of menu.children) {
                 router.addRoute('main',createMainRouteNode(child.url) )
+                if (firstUrl === undefined) {
+                    firstUrl = child.url.toLowerCase()
+                }
             }
         }
     } catch (error) {
         console.error('加载菜单配置失败:', error)
     }
+
+    //进入第一个路由
+    console.log('进入第一个路由:', firstUrl)
+    router.push(firstUrl as string)
 })
 </script>
 

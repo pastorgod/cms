@@ -22,7 +22,15 @@ const update = e => {
   y.value = e.pageY
 }
 
-onMounted(() => window.addEventListener('mousemove', update))
+onMounted(() => {
+    
+    console.log('mounted1111111111111')
+    
+    
+
+    window.addEventListener('mousemove', update)
+
+})
 onUnmounted(() => window.removeEventListener('mousemove', update))
 
 </script>
