@@ -23,7 +23,7 @@
         </div>
 
         <div class="options">
-            <el-checkbox id="" v-model="isSaveRecord" label="记住账号和项目" size="large" />
+            <el-checkbox v-model="isSaveRecord" label="记住账号和项目" size="large" />
         </div>
 
         <el-button class="login-btn" type="primary" size="large" @click="loginHanle">立即登录</el-button>
@@ -32,12 +32,12 @@
 
 <!-- =============================代码============================ -->
 <script setup lang="ts">
-import { SetLocalCache,RemoveLocalCache,GetLocalBoolean,} from '@/utils/cacheUtils'
+import { SetLocalCache, RemoveLocalCache, GetLocalBoolean } from '@/utils/cacheUtils'
 import { ElMessage } from 'element-plus'
-import {ref,watch} from 'vue'
+import { ref, watch } from 'vue'
 import constDefine from '@/define/constDefine'
-import {IsNullOrEmpty} from '@/utils/stringUtils'
-import {useRouter} from 'vue-router'
+import { IsNullOrEmpty } from '@/utils/stringUtils'
+import { useRouter } from 'vue-router'
 import AcountPanel from './AcountPanel.vue'
 import TabSlot from './TabSlot.vue'
 import useLoginStore from '@/stores/loginStore'
@@ -61,7 +61,6 @@ watch(isSaveRecord, (newValue) => {
 
 //点击登录按钮
 function loginHanle() {
-    
     if (activeName.value === 'qrcode') {
         ElMessage.error('暂不支持这种登录方式')
         return

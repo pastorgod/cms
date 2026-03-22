@@ -5,8 +5,7 @@ import constDefine from '@constDefine'
 import { SetLocalCache } from '@/utils/cacheUtils'
 
 // 抓取所有vue文件，防止动态路由的原因，在打包的时候，vue组件被剔除。此举是为了通知vite
-import.meta.glob("/src/views/**/*.vue",{eager:false})
-
+import.meta.glob('/src/views/**/*.vue', { eager: false })
 
 const router = createRouter({
     history: createWebHistory(),
@@ -14,7 +13,7 @@ const router = createRouter({
         {
             path: '/',
             name: 'root',
-            redirect: '/main',
+            redirect: '/login',
         },
         {
             path: '/main',
@@ -24,18 +23,17 @@ const router = createRouter({
         {
             path: '/login',
             name: 'login',
-            component: () => import('@/views/Login/LoginView.vue')
+            component: () => import('@/views/Login/LoginView.vue'),
         },
         {
             path: '/:pathMatch(.*)',
-            component: () => import('@/views/404/NotFound.vue')
+            component: () => import('@/views/404/NotFound.vue'),
         },
     ],
 })
 
 //- 路由守卫
 router.beforeEach((to, from, next) => {
-    
     console.log('router beforeEach')
     if (to.name === 'login') {
         next()
@@ -43,22 +41,16 @@ router.beforeEach((to, from, next) => {
     }
 
     //路由为主页某个菜单，存下最近访问的页面
-    if(to.fullPath.startsWith('/main'))
-    {
-       if(to.fullPath != '/main')
-        {
-            SetLocalCache(constDefine.LAST_ACCESS_URL,to.fullPath)
-        } 
+    if (to.fullPath.startsWith('/main')) {
+        if (to.fullPath != '/main') {
+            SetLocalCache(constDefine.LAST_ACCESS_URL, to.fullPath)
+        }
     }
 
-    
-
-
-    
     next()
 })
 
-// router.afterEach((to, from) => { 
+// router.afterEach((to, from) => {
 //     console.log('afterEach');
 // })
 
