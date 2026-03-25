@@ -7,11 +7,12 @@
 // pop是数组方法，数组有pop和push，pop是删除数组最后一个元素，返回被删除的元素
 // /main/systemInfo/  split('/') => ['','main','systemInfo','']
 
-const createMainRouteNode = (url:string) => {
+const createMainRouteNode = (url: string) => {
+    console.log('%s,%o', 'url', url)
 
     //url最后一个 是文件名,大小写要保证，因为要放 linux服务器
-    const name:string = url.split('/').filter(Boolean).pop() || '';
-    
+    const name: string = url.split('/').filter(Boolean).pop() || ''
+
     //## 动态导入，不能是一个变量，直接传给 import ，否则vite无法分析，
     //动静结合，只传一个文件名，vite不报警告
     //
@@ -24,8 +25,8 @@ const createMainRouteNode = (url:string) => {
     return {
         path: url.toLowerCase(),
         name: name.toLowerCase(),
-        component: () => import(/* @vite-ignore */`/src/views${url}.vue`),
+        component: () => import(/* @vite-ignore */ `/src/views${url}.vue`),
     }
 }
 
-export {createMainRouteNode}
+export { createMainRouteNode }

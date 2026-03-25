@@ -5,7 +5,7 @@
     "semi": false,
     "singleQuote": true,
     "printWidth": 200,
-    "endOfLine": "auto",
+    "endOfLine": "crlf",
     "bracketSpacing": true,
     "proseWrap": "preserve"
 }

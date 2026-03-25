@@ -20,4 +20,4 @@ trim_trailing_whitespace = false
 end_of_line = crlf
 
 # 设置每行最大字符长度为100个字符，默认值：80
-max_line_length = 100
+max_line_length = 200

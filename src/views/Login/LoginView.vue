@@ -31,7 +31,7 @@ import LoginPanel from '@/views/Login/LoginPanel.vue'
 
 import { GetLocalCache } from '@/utils/cacheUtils'
 import constDefine from '@/define/constDefine'
-import {RemoveLocalCache} from '@/utils/cacheUtils'
+import { RemoveLocalCache } from '@/utils/cacheUtils'
 
 import useLoginStore from '@/stores/loginStore'
 const loginStore = useLoginStore()

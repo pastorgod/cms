@@ -56,6 +56,7 @@ const isSaveRecord = ref(GetLocalBoolean(constDefine.IS_SAVE_RECORD))
 
 // 监听引用值变化
 watch(isSaveRecord, (newValue) => {
+    console.log('isSaveRecord', newValue)
     SetLocalCache(constDefine.IS_SAVE_RECORD, newValue ? 1 : 0)
 })
 

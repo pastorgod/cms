@@ -69,18 +69,22 @@ function clickItemHandle(child) {
 //菜单数据
 const menuList = ref<IMenu[]>([])
 onMounted(async () => {
+    console.log('菜单数据加载')
 
-    console.log('onMountedonMountedonMountedonMounted')
-
-    let firstUrl:string | undefined = undefined
+    let firstUrl: string | undefined = undefined
     try {
         const response = await fetch('/src/assets/config/main_menu.json')
         menuList.value = await response.json()
-        
+
         //动态添加路由,通过配置注册路由,不用每次往 rounter里面加了
         for (const menu of menuList.value) {
             for (const child of menu.children) {
-                router.addRoute('main',createMainRouteNode(child.url) )
+                //创建路由节点
+                const routeNode = createMainRouteNode(child.url)
+
+                //添加路由
+                router.addRoute('main', routeNode)
+
                 if (firstUrl === undefined) {
                     firstUrl = child.url.toLowerCase()
                 }

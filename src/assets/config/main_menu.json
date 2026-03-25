@@ -1,55 +1,55 @@
 [
     {
         "title": "菜单一",
-        "icon":"location",
+        "icon": "location",
         "id": 10000,
         "children": [
             {
-                "title": "子菜单1",
+                "title": "GM面板",
                 "id": 10001,
-                "url":"/Main/SystemInfo"
+                "url": "/Main/GM/GMPanel"
             },
             {
                 "title": "子菜单2",
                 "id": 10002,
-                "url":"/Main/Submenu2"
+                "url": "/Main/Submenu2"
             },
             {
                 "title": "子菜单3",
                 "id": 10003,
-                "url":"/Main/Submenu3"
+                "url": "/Main/Submenu3"
             },
             {
                 "title": "子菜单4",
                 "id": 10004,
-                "url":"/Main/Submenu4"
+                "url": "/Main/Submenu4"
             }
         ]
     },
     {
         "title": "菜单二",
-        "icon":"location",
+        "icon": "location",
         "id": 20000,
         "children": [
             {
                 "title": "子菜单1",
                 "id": 20001,
-                "url":"/Main/Submenu1"
+                "url": "/Main/Submenu1"
             },
             {
                 "title": "子菜单2",
                 "id": 20002,
-                "url":"/Main/Submenu2"
+                "url": "/Main/Submenu2"
             },
             {
                 "title": "子菜单3",
                 "id": 20003,
-                "url":"/Main/Submenu3"
+                "url": "/Main/Submenu3"
             },
             {
                 "title": "子菜单4",
                 "id": 20004,
-                "url":"/Main/Submenu4"
+                "url": "/Main/Submenu4"
             }
         ]
     }
