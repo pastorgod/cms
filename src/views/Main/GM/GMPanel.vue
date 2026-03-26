@@ -41,12 +41,12 @@ import GMRecent from '@/views/Main/GM/GMRecent.vue'
 
 .GMTreePanel {
     // flex: 2;
-    width: 70%;
+    width: 100%;
     height: 100%;
 }
 .GMRecent {
     // flex: 1;
-    width: 30%;
+    width: 100%;
     height: 100%;
 }
 </style>

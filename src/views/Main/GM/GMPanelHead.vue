@@ -5,7 +5,8 @@
         <el-row :gutter="16">
             <el-col :xs="12" :sm="12" :md="8" :lg="8" :xl="4">
                 <div class="curentServer">
-                    <el-row :guttter="16">
+                    <!-- 修复：修正 gutter 拼写错误 (guttter -> gutter) -->
+                    <el-row :gutter="16">
                         <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
                             <div>
                                 <div class="title">内网测试服</div>
@@ -49,6 +50,8 @@
 <!-- =============================代码============================ -->
 <script setup lang="ts">
 import { ref } from 'vue'
+// 移动：将图标导入移至文件顶部，保持代码规范
+import { ArrowDown } from '@element-plus/icons-vue'
 
 const dropdownItems = ref([
     { label: 'Action 1' },
@@ -75,9 +78,6 @@ const stats = ref([
 const removeStat = (index: number) => {
     stats.value = stats.value.filter((_, i) => i !== index)
 }
-
-import { ArrowDown } from '@element-plus/icons-vue'
-
 
 </script>
 
