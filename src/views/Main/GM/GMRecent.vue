@@ -1,9 +1,8 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <!-- =============================模板============================ -->
 <template>
-   <div class = "GMRecent">
-       <h2>GMRecent</h2>
-   </div>
+    <div class="GMRecent">
+    </div>
 </template>
 
 
@@ -19,8 +18,8 @@
 <!-- =============================样式============================ -->
 <style lang="less" scoped>
 .GMRecent {
-  width: 100%;
-//   height: 100%;
-  background-color:#1387b4;
+    width: 100%;
+    //   height: 100%;
+    background-color: #1387b4;
 }
 </style>

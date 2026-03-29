@@ -14,7 +14,6 @@
 
 <!-- =============================代码============================ -->
 <script setup lang="ts">
-import {resolveComponent } from 'vue'
 
 //定义参数
 defineProps<{

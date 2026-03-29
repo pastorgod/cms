@@ -1,6 +1,6 @@
 import 'normalize.css' // 重置样式
 import './assets/css/index.less' //导入通用样式
-import 'element-plus/dist/index.css' //element-plus样式
+import 'element-plus/dist/index.css' //element-plus 样式
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'

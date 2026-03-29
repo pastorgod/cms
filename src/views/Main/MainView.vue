@@ -79,10 +79,9 @@ onMounted(async () => {
         //动态添加路由,通过配置注册路由,不用每次往 rounter里面加了
         for (const menu of menuList.value) {
             for (const child of menu.children) {
-                //创建路由节点
-                const routeNode = createMainRouteNode(child.url)
 
-                //添加路由
+                //创建路由节点,并添加 
+                const routeNode = createMainRouteNode(child.url)
                 router.addRoute('main', routeNode)
 
                 if (firstUrl === undefined) {
@@ -112,26 +111,27 @@ onMounted(async () => {
     --el-header-height: 100px;
 }
 
-:deep(.el-sub-menu__title) {
+.el-sub-menu__title {
     font-size: 16px;
     color: #fff;
     background-color: #000;
 }
 
+// 通过增加父级选择器提高优先级
 :deep(.el-sub-menu__title:hover) {
-    background-color: #3772f3;
-    color: #fff;
+    background-color: #3772f3 ;
+    color: #fff ;
 }
 
-:deep(.el-menu-item) {
+.el-menu-item {
     background-color: #001529;
 }
 
-:deep(.el-menu-item:hover) {
-    background-color: #3772f3;
+.el-menu-item:hover {
+    background-color: rgb(55, 114, 243);
 }
 
-:deep(.el-menu-item.is-active) {
+.el-menu-item.is-active {
     background-color: #3772f3;
     border-left: 5px solid #2bf74d;
 }
@@ -194,6 +194,7 @@ onMounted(async () => {
 
         .el-main {
             background-color: rgb(255, 255, 255);
+            padding-top: 0px;
         }
     }
 }

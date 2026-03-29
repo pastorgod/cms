@@ -8,7 +8,7 @@
 // /main/systemInfo/  split('/') => ['','main','systemInfo','']
 
 const createMainRouteNode = (url: string) => {
-    console.log('%s,%o', 'url', url)
+    // console.log('%s,%o', 'url', url)
 
     //url最后一个 是文件名,大小写要保证，因为要放 linux服务器
     const name: string = url.split('/').filter(Boolean).pop() || ''

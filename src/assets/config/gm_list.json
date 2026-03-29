@@ -1,0 +1,140 @@
+[
+    {
+        "title": "暗能",
+        "initial": "A",
+        "id": 1,
+        "icon": "Setting",
+        "list": [
+            {
+                "id": 1,
+                "name": "暗能1",
+                "inputList": [
+                    {
+                        "type": 0,
+                        "desc": "这一条是纯描述"
+                    }
+                ]
+            },
+            {
+                "id": 1,
+                "name": "暗能1",
+                "inputList": [
+                    {
+                        "type": 1,
+                        "placeholder": "请输入ID"
+                    },
+                    {
+                        "type": 0,
+                        "desc": "这一条是纯描述"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "title": "赛季",
+        "initial": "S",
+        "icon": "Setting",
+        "list": [
+            {
+                "id": 1,
+                "name": "赛季1",
+                "inputList": [
+                    {
+                        "type": 1,
+                        "placeholder": "请输入ID",
+                        "selecter":"selectFuncName"
+                    },
+                    {
+                        "type": 0,
+                        "desc": "这一条是纯描述"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "name": "赛季2",
+                "inputList": [
+                    {
+                        "type": 1,
+                        "placeholder": "请输入赛季2ID"
+                    },
+                    {
+                        "type": 0,
+                        "desc": "赛季2的纯描述"
+                    },
+                    {
+                        "type": 1,
+                        "placeholder": "请输入赛季2 value"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "title": "神通",
+        "initial": "S",
+        "icon": "Setting",
+        "list": [
+            {
+                "id": 1,
+                "name": "神通1",
+                "inputList": [
+                    {
+                        "type": 1,
+                        "placeholder": "请输入ID"
+                    },
+                    {
+                        "type": 0,
+                        "desc": "这一条是纯描述"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "name": "神通2",
+                "inputList": [
+                    {
+                        "type": 0,
+                        "desc": "神通2的纯描述"
+                    },
+                    {
+                        "type": 1,
+                        "placeholder": "请输入神通2ID"
+                    },
+                    {
+                        "type": 1,
+                        "placeholder": "请输入神通2 value"
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "name": "神通3",
+                "inputList": [
+                    {
+                        "type": 0,
+                        "desc": "神通3的纯描述"
+                    },
+                    {
+                        "type": 1,
+                        "placeholder": "请输入神通3ID"
+                    },
+                    {
+                        "type": 1,
+                        "placeholder": "请输入神通3 value"
+                    },{
+                        "type": 1,
+                        "placeholder": "请输入神通3 组队任务"
+                    }
+                    ,{
+                        "type": 1,
+                        "placeholder": "请输入神通3 组队任务"
+                    }
+                ]
+            }
+        ]
+    }
+]

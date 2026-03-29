@@ -19,6 +19,7 @@ const router = createRouter({
             path: '/main',
             name: 'main',
             component: () => import('@/views/Main/MainView.vue'),
+            
         },
         {
             path: '/login',
@@ -49,9 +50,5 @@ router.beforeEach((to, from, next) => {
 
     next()
 })
-
-// router.afterEach((to, from) => {
-//     console.log('afterEach');
-// })
 
 export default router
