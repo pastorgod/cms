@@ -42,11 +42,14 @@ const props = defineProps<{
     dataList: IGMInputItem[],
 }>()
 
-// 修改为计算属性：遍历 dataList，如果有 type == 0 的对象，返回其 desc 字段，否则返回 false
-const showDesc = computed(() => {
-    if (!props.dataList) return false;
+// 修改为计算属性：遍历 dataList，如果有 type == 0 的对象，返回其 desc 字段，否则返回空字符串
+// 【优化点】：统一返回类型为 string，避免返回 boolean 导致类型联合（string | boolean），
+// 这样 v-if 判断空字符串同样生效，且模板插值类型更安全。
+const showDesc = computed((): string => {
+    if (!props.dataList) return '';
     const targetItem = props.dataList.find(item => item.type === 0);
-    return targetItem ? targetItem.desc : false;
+    // 确保即使 desc 未定义也返回空字符串，防止 undefined 被渲染
+    return targetItem?.desc ?? '';
 });
 
 ///有一个大于 0 的，就显示提交按钮
