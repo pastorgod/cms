@@ -8,6 +8,7 @@ import type {
   WebSocketState, 
   WebSocketError 
 } from '@/define/websocket'
+import { SocketState } from '@/define/websocket' // 引入枚举
 
 interface State {
   socket: WebSocket | null
@@ -22,7 +23,7 @@ interface State {
 export const useWebSocketStore = defineStore('websocket', {
   state: (): State => ({
     socket: null,
-    state: 'CLOSED',
+    state: SocketState.CLOSED,
     messages: [],
     reconnectCount: 0,
     lastMessageTime: Date.now(),
@@ -31,7 +32,7 @@ export const useWebSocketStore = defineStore('websocket', {
   }),
 
   getters: {
-    isConnected: (state): boolean => state.state === 'OPEN',
+    isConnected: (state): boolean => state.state === SocketState.OPEN,
     connectionState: (state): WebSocketState => state.state,
     messageCount: (state): number => state.messages.length
   },
@@ -57,7 +58,7 @@ export const useWebSocketStore = defineStore('websocket', {
 
       try {
         this.socket = new WebSocket(url)
-        this.state = 'CONNECTING'
+        this.state = SocketState.CONNECTING
 
         if (debug) {
           console.log('[WebSocket] 正在连接...', url)
@@ -65,7 +66,7 @@ export const useWebSocketStore = defineStore('websocket', {
 
         // 连接成功
         this.socket.onopen = () => {
-          this.state = 'OPEN'
+          this.state = SocketState.OPEN
           this.reconnectCount = 0
           this.lastMessageTime = Date.now()
 
@@ -97,7 +98,7 @@ export const useWebSocketStore = defineStore('websocket', {
 
         // 连接关闭
         this.socket.onclose = (event: CloseEvent) => {
-          this.state = 'CLOSED'
+          this.state = SocketState.CLOSED
           this.clearHeartbeat()
 
           if (debug) {
@@ -164,7 +165,7 @@ export const useWebSocketStore = defineStore('websocket', {
         this.socket.close()
         this.socket = null
       }
-      this.state = 'CLOSED'
+      this.state = SocketState.CLOSED
       this.clearHeartbeat()
       this.clearReconnect()
     },
@@ -177,7 +178,7 @@ export const useWebSocketStore = defineStore('websocket', {
 
       // 定时发送心跳
       this.heartbeatTimer = window.setInterval(() => {
-        if (this.state === 'OPEN') {
+        if (this.state === SocketState.OPEN) {
           // 发送心跳消息
           this.sendMessage({ type: 'heartbeat', timestamp: Date.now() })
 

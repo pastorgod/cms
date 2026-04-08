@@ -1,6 +1,16 @@
 // types/websocket.ts
 
 /**
+ * WebSocket状态枚举
+ */
+export enum SocketState {
+  CONNECTING = 'CONNECTING',
+  OPEN = 'OPEN',
+  CLOSING = 'CLOSING',
+  CLOSED = 'CLOSED'
+}
+
+/**
  * WebSocket消息类型
  */
 export interface WebSocketMessage {
@@ -23,7 +33,7 @@ export interface WebSocketOptions {
 /**
  * WebSocket状态
  */
-export type WebSocketState = 'CONNECTING' | 'OPEN' | 'CLOSING' | 'CLOSED'
+export type WebSocketState = SocketState
 
 /**
  * 监听器回调类型
